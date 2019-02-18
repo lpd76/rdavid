@@ -1,0 +1,29 @@
+<div class="pr-section clientele" style="background-image:url('{% static 'images/neige.jpg' %}'); background-size: cover;" id="clientele">
+	<div class="main-title">
+		<h1><i class="fas fa-handshake"></i> Services</h1>
+	</div>
+	
+	<div class="main-text">
+		
+	</div>
+	
+	<div class="card-container">
+		<div class="row">
+		{% for client in all_clientele %}
+			<div class="flip-card">
+				<div class="flip-card-inner">
+					<div class="flip-card-front">
+						<h3>{{ client.nom_fr }}<h3>
+					</div>
+					<div class="flip-card-back"> 
+						{% for service in client.services.all %}
+							<h6><a href="/">{{ service }}</a><h6>
+						{% endfor %}
+					</div>
+				</div>
+			</div>	
+		{% endfor %}
+		</div>
+	</div>
+	
+</div>

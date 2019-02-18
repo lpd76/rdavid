@@ -1,0 +1,110 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+{% block head_css_section %}
+<link rel="stylesheet" href= "{% static 'css/psy_profile.css' %}">
+<link rel="stylesheet" href= "{% static 'css/psy_home.css' %}">
+{% endblock head_css_section %}
+
+{% block content %}
+
+	{% if user.is_authenticated %}
+		<div class="container profile-page">
+			<div class="psy-attributes-card">
+	  			<div class="row">
+	  			
+					<div class="col-md-3">
+						<div class="card">	
+							<div class="card-body">
+								<h2>
+									<div class='card-title text-center'>
+										Client
+									</div>
+								</h2>
+								<div class='card-text'>
+									<p><a href="{% url 'client_add' %}" class="btn btn-success btn-lg btn-block" role="button"> Create </a></p>
+									<p><a href="" class="btn btn-info btn-lg btn-block disabled" role="button"> Update </a></p>
+									<p><a href="{% url 'list' %}" class="btn btn-primary btn-lg btn-block" role="button"> Search </a></p>
+								</div>
+							</div>
+						</div>	
+					</div>
+					
+					<div class="col-md-3">
+						<div class="card">	
+							<div class="card-body">
+								<h2>
+									<div class='card-title text-center'>
+										Appointments
+									</div>
+								</h2>
+								<div class='card-text'>
+									<p><a href="{% url 'appointment_add' %}" class="btn btn-success btn-lg btn-block" role="button"> Create </a></p>
+									<p><a href="" class="btn btn-info btn-lg btn-block disabled " role="button" > Update </a></p>
+									<p><a href="" class="btn btn-primary btn-lg btn-block disabled " role="button"> Search </a></p>
+								</div>
+							</div>
+						</div>	
+					</div>
+					
+					<div class="col-md-3">
+						<div class="card">	
+							<div class="card-body">
+								<h2>
+									<div class='card-title text-center'>
+										Expenses
+									</div>
+								</h2>
+								<div class='card-text'>
+									<p><a href="" class="btn btn-success btn-lg btn-block disabled" role="button"> Create </a></p>
+									<p><a href="" class="btn btn-info btn-lg btn-block disabled" role="button"> Update </a></p>
+									<p><a href="" class="btn btn-primary btn-lg btn-block disabled" role="button"> Search </a></p>
+								</div>
+							</div>
+						</div>	
+					</div>
+					
+					<div class="col-md-3">
+						<div class="card h-100">	
+							<div class="card-body">
+								<h2>
+									<div class='card-title text-center'>
+										Profile
+									</div>
+								</h2>
+								<div class='card-text'>		
+									<p><a href="{{psychologue.get_absolute_url }}" class="btn btn-danger btn-lg btn-block" role="button"> View </a></p>
+									<p><a href="" class="btn btn-info btn-lg btn-block disabled" role="button"> Update </a></p>
+									<p><a href="" class="btn btn-primary btn-lg btn-block disabled" role="button"> Search </a></p>		
+									
+								</div>
+							</div>
+						</div>	
+					</div>
+					
+					<div class="col-md-3">
+						<div class="card h-100">	
+							<div class="card-body">
+								<h2>
+									<div class='card-title text-center'>
+										Dashboard
+									</div>
+								</h2>
+								<div class='card-text'>		
+									<p><a href="" class="btn btn-danger btn-lg btn-block disabled" role="button"> View </a></p>
+									<p><a href="" class="btn btn-info btn-lg btn-block disabled" role="button"> Update </a></p>
+									<p><a href="" class="btn btn-primary btn-lg btn-block disabled" role="button"> Search </a></p>		
+									
+								</div>
+							</div>
+						</div>	
+					</div>
+					
+				</div>
+	  		</div>
+	  	</div>
+	  	
+	{% else %}
+		<h1> Fuck off <h1>
+	{% endif %}
+{% endblock %}

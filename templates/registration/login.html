@@ -1,0 +1,34 @@
+<!-- templates/registration/login.html 
+https://wsvincent.com/django-user-authentication-tutorial-login-and-logout/
+https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Authentication
+https://bootsnipp.com/snippets/dldxB-->
+{% extends 'base2.html' %}
+{% load static %}
+{% block head_css_section %}
+<link rel="stylesheet" href= "{% static 'css/login.css' %}">
+{% endblock head_css_section %}
+{% block content %}
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <i class="fas fa-users"></i>
+    </div>
+
+    <!-- Login Form -->
+    <form name="LoginForm" method="post">
+    	{% csrf_token %}
+    	 {{ form.as_p }}
+      <input type="submit" class="fadeIn fourth" value="Log In">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href={% url 'password_reset' %}>Forgot Password?</a>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

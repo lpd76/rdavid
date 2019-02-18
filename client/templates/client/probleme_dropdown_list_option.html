@@ -1,0 +1,4 @@
+<option value="">---------</option>
+{% for probleme in problemes %}
+<option value="{{ probleme.pk }}">{{ probleme.nom_fr }}</option>
+{% endfor %}

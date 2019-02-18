@@ -1,0 +1,44 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+{% block head_css_section %}
+<link rel="stylesheet" href= "{% static 'css/new_client_form.css' %}">
+{% endblock head_css_section %}
+{% block content %}
+
+	<div class="container form">
+  		<div class="row justify-content-md-center">
+  			<div class="col-lg-3">
+				{{ appointment.scheduled_on}}
+			</div>
+  			<div class="col-lg-3">
+				{{ appointment.client.prenom}} {{ appointment.client.nom}}
+			</div>
+			<div class="col-lg-3">
+				{{ appointment.intervention}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-6">
+				<h1>Notes</h1>
+			</div>
+		</div>
+		<div class="row justify-content-md-center">
+			<div class="col-lg-6">
+				{{ appointment.note|escape|linebreaks}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3">
+			</div>
+			<div class="col">
+				<a href="{% url 'client_add' %}" class="btn btn-primary" role="button"> Back </a>
+			
+				<a href="{% url 'client_add' %}" class="btn btn-danger" role="button"> Edit </a>
+		
+				<a href="{% url 'client_add' %}" class="btn btn-primary" role="button"> Next </a>
+			</div>
+		</div>
+	</div>
+	
+{% endblock %}

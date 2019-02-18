@@ -1,0 +1,141 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+
+{% block head_css_section %}
+<link rel="stylesheet" href= "{% static 'css/speciality2.css' %}">
+{% endblock head_css_section %}
+
+
+
+{% block content %}
+<div class="container-fluid bg accueil-image" id="Acceuil">
+	
+	<div class="row">
+		<div class="col-sm-12 section-title Accueil-section-title">
+			Acceuil
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-sm-12 col-md-10 section-text section-text-Accueil">
+			{% for text in sectiontext %}
+				{% if text.nom_fr == "Acceuil" %}
+					<p>{{ text.text_fr|escape|linebreaks  }}</p>
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid bg psychologues-image" id="psychologues">
+	<div class="row">
+		<div class="col-sm-12 section-title ">
+			Notre Équipe
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12 col-md-10 section-text">
+			{% for text in sectiontext %}
+				{% if text.nom_fr == "Psychologues" %}
+					<p>{{ text.text_fr|escape|linebreaks  }}</p>
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+	<div class="container psy-card-content-container">
+		<div class="row">
+			{% for psy in staff %}
+				<div class="col-sm-6 col-lg-4 d-flex justify-content-center">
+					<div class="psy-card d-flex justify-content-center">
+						<a href="{% url 'psychologues_profile' psy.id %}">
+							<img class="img-raised rounded-circle img-fluid card-img-top" src= "media/{{ psy.avatar }}" alt="profile picture">
+							<div class="psy-card-content-container">
+								<div class="psy-card-name">
+									<div class="">{{ psy.user.first_name }} {{psy.user.last_name }}</div>
+								</div>
+								<div class="">{{psy.education }}</div>
+								<a href="{{ psy.linked_in }}"><i class="fab fa-linkedin"></i></a>
+								<a href = "mailto: {{ psy.email }}"><i class="fas fa-envelope"></i></a>
+								<a href="tel:{{ psy.phone }}"><i class="fas fa-phone"></i></a>
+							</div>
+						</a>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>		
+</div>
+
+<div class="container-fluid bg problematique-image" id="problematique">
+	<div class="row justify-content-md-center">
+		<div class="col-sm-12 section-title">
+			Nous sommes là pour vous
+		</div>
+	</div>
+	<div class='row'>
+	 	<div class="col-md-3 service">
+	 		{{ services_offerts_list|unordered_list }}
+	 	</div>
+	 	<div class="col-md-3 service">
+	 		{% for k,v in services_offerts_dict.items %}
+	 			<p>{{ k }}</p>
+	 			{% for d,e in v.items %}
+	 				<p>{{ d }}</p>
+	 				{% for elem in e %}
+	 					<p>{{ elem }}</p>
+	 				{% endfor %}
+	 			{% endfor %}
+	 		{% endfor %}
+	 	</div>
+	</div>
+</div>
+
+
+
+
+<div class="container-fluid bg locaux-image" id="locaux">
+	<div class="row justify-content-md-center">
+		<div class="col section-title">
+			Nos Locaux
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-md-10 section-text section-text-locaux">
+			{% for text in sectiontext %}
+				{% if text.nom_fr == "Nos locaux" %}
+					<p>{{ text.text_fr|escape|linebreaks  }}</p>
+				{% endif %}
+			{% endfor %}
+		</div>	
+	</div>
+	
+	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+		<ol class="carousel-indicators">
+			<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+			<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+			<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+		</ol>
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img class="d-block w-80 img-fluid" src="/static/images/Bureau-Raymond-M-Eve.jpg" alt="First slide">
+			</div>
+			<div class="carousel-item">
+				<img class="d-block w-80" src="/static/images/Bureau-conférence.jpg" alt="Second slide">
+			</div>
+			<div class="carousel-item">
+				<img class="d-block w-80" src="/static/images/Bureau-Sandra.jpg" alt="Third slide">
+			</div>
+		</div>
+		<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
+</div>
+{% endblock content %}
+

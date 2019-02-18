@@ -1,0 +1,143 @@
+@charset "UTF-8";
+
+html, body {
+    height: 100%;
+}
+
+
+
+body {
+  font-family: 'Open Sans Condensed', sans-serif;  
+}
+
+.container-fluid {
+	padding-top:50px;
+    height: 100%;
+    overflow-y: scroll; /* don't show content that exceeds my height */
+}
+
+/* Backgrooound Image */
+.bg {
+   /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.accueil-image{
+	/* The image used */
+  background-image: url("../images/bird.jpg");
+	
+}
+.problematique-image{
+	/* The image used */
+  background-image: url("../images/railroad.jpg");
+	
+}
+.psychologues-image{
+	/* The image used */
+  background-image: url("../images/LOGO_OPQ_big.jpg");
+  background-size: auto;
+  background-color:rgba(57,110,142,1);
+}
+.locaux-image{
+	/* The image used */
+  background-color:rgba(57,110,142,1);
+  background-color:white;
+  background-color:rgba(0,0,0,0.3);
+}
+.services-image{
+	background-image: url("../images/neige.jpg");
+}
+.section-title{
+	background-color:rgba(0,0,0,0.3);
+	color:white;
+	font-size:50px;
+	text-align:center;
+	margin: 0% 0% 0% 0%;
+	height: 30%
+	
+}
+.Accueil-section-title{
+	margin: 0% 0% 12% 0%;
+	 
+	
+}
+.section-text{
+	margin: 0% 0% 0% 10%;
+	color:white;
+	max-height:10%
+	
+}
+.section-text-Accueil {
+	font-size:35px;
+	/*
+	background-color:rgba(124,136,155,0.5);
+	border-style:solid;
+	border-color:rgba(255,255,255,0.4);
+	border-width: 5px;
+	*/
+}
+.section-text-locaux{
+	font-size:35px;
+}
+/* Carte de profile psychologue */ 
+.psy-card-container{
+	margin-top: 10%;
+	overflow-y: scroll;
+}
+
+.psy-card{
+    margin: 40px 0px 20px 0px;
+    padding: 10px 0px 0px 0px;
+    height:150px;
+    width:300px;
+    border-radius: 6px;
+    box-shadow: 0 16px 24px 2px rgba(0,0,0,.14), 0 6px 30px 5px rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
+    background-color: #2980b9;
+    opacity:1;
+}
+
+
+.psy-card img{
+	border-radius: 50%;
+	box-shadow: 0 5px 15px -8px rgba(0,0,0,.24), 0 8px 10px -5px rgba(0,0,0,.2);
+}
+
+.card-img-top {
+  position: absolute;
+  top: -10px;
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto; 
+  width: 80px;
+ 
+}
+.psy-card-content-container{
+	margin-top:10%;
+	color:white;
+	text-align:center;
+}
+.psy-card-name{
+	font-size: 35px;
+		
+}
+.psy-card a{
+	color:white;	
+}
+
+.carousel{
+	margin-top:70px;
+}
+
+.carousel-inner > .carousel-item > img {
+    margin: 0 auto;
+}
+
+.service{
+	color:white;
+}

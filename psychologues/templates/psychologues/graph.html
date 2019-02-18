@@ -1,0 +1,20 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+{% block head_css_section %}
+<link rel="stylesheet" href= "{% static 'css/psy_profile.css' %}">
+<link rel="stylesheet" href= "{% static 'css/psy_home.css' %}">
+{% endblock head_css_section %}
+
+{% block content %}
+{% if graph %}
+<div class="row">
+	<div class="col-lg-6">
+		{{ graph|safe }}
+	</div>
+	<div class="col-lg-6">
+		{{ graph|safe }}
+	</div>
+</div>
+{% endif %}
+{% endblock %}

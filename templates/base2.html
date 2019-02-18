@@ -1,0 +1,120 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{% block title %} Home {% endblock title %} | Psychologie d'Yoouville</title>
+		
+        {% block head_favicon %}
+            <link rel="icon" type="image/png" href="{% static 'images/favicon.ico'%}">
+        {% endblock head_favicon %}
+        
+        {% block head_meta %}
+            {% block head_meta_charset %}
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+            {% endblock head_meta_charset %}
+            {% block head_meta_contentlanguage %}
+                <meta http-equiv="Content-Language" value="en-US" />
+            {% endblock head_meta_contentlanguage %}
+            {% block head_meta_viewport %}
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            {% endblock head_meta_viewport %}
+        {% endblock head_meta %}
+        
+        {% block head_css %}
+        
+            {% block head_css_site %}
+            	{% load bootstrap4 %}
+				{% bootstrap_css %}
+				{% bootstrap_javascript jquery='full' %}
+                <link href="https://fonts.googleapis.com/css?family=Coda|Open+Sans+Condensed:300|Roboto" rel="stylesheet">
+                <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+            {% endblock head_css_site %}
+            
+            {% block head_css_section %}
+            {% endblock head_css_section %}
+            
+            {% block head_css_page %}
+            {% endblock head_css_page %}
+            
+        {% endblock head_css %}
+        
+		
+    	
+    	<!-- Optional JavaScript -->
+    	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    	
+	</head>
+	<body>
+		{# Navigation Menu #}
+		<nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
+			<a class="navbar-brand" href="{% url 'index' %}#Acceuil">Psychologie d'Youville</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					{% if user.is_authenticated %}
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'psychologues_home' %}">{{ user.first_name }} {{ user.last_name }} <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'logout' %}">Logout</a>
+					 </li>
+					{% else %}
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'index' %}#Acceuil">Acceuil <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'index' %}#psychologues">Psychologues</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'index' %}#problematique">Services</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'index' %}#locaux">Nos Locaux</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'login' %}">Loggin</a>
+					</li>
+					{% endif %}
+				</ul>
+			</div>
+		</nav>
+
+	    
+	    {# The Document Body #}
+	    	{% block content %}
+	    	
+	    	{% endblock content %}
+	  		
+	  		
+	    
+	    {# The Footer #}
+	    <!-- Footer -->
+		<footer class="page-footer ">
+		
+		  <!-- Copyright -->
+		  <div class="footer-copyright text-center py-3">© 2018 Copyright:
+		    <a href="."> BalanDavid.com</a>
+		  </div>
+		  <!-- Copyright -->
+		
+		</footer>
+		<!-- Footer -->
+	</body>
+	{# Set of blocks that can be used to display JavaScript files #}
+    {% block footer_javascript %}
+    
+        {% block footer_javascript_site %}
+        {% endblock footer_javascript_site %}
+        
+        {% block footer_javascript_section %}
+        {% endblock footer_javascript_section %}
+        
+        {% block footer_javascript_page %}
+        {% endblock footer_javascript_page %}
+        
+    {% endblock footer_javascript %}
+</html>

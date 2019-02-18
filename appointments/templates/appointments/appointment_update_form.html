@@ -1,0 +1,35 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+
+
+{% block head_css_section %}
+<link rel="stylesheet" href= "{% static 'css/new_client_form.css' %}">
+{% endblock head_css_section %}
+
+{% block content %}
+	<div class="container form">
+		<div class="row justify-content-md-center">
+			<div class="col-lg-5">
+				<h3>Update appointement</h3>
+				<form method="post" id="clientForme" novalidate>
+				    {% csrf_token %}
+				    {{ form.media }}
+				    <table>
+				    	{% bootstrap_form form layout='table'%}
+				    </table>
+				    {% buttons %}
+					    <button type="submit" class="btn btn-primary">Submit</button>
+					    <a class="btn btn-danger" href="{% url 'psychologues_home' %}" role="button">Cancel</a>
+				    {% endbuttons %}
+				
+				</form>
+			</div>
+		</div>
+	</div>
+	
+{% endblock %}

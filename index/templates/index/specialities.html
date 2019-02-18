@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head_css_section %}
+<link rel="stylesheet" href= "{% static 'css/speciality.css' %}">
+{% endblock head_css_section %}
+
+{% block content %}
+
+<div class="pr-section Acceuil" style="background-image:url('{% static 'images/bird.jpg' %}'); background-size: cover;" id="Acceuil">
+	<div class="main-title">
+		<h1><i class="fas fa-home"></i> Acceuil</h1>
+	</div>
+	<div class="container-fluid main-text-acceuil">
+		<div class="row">
+			<div class="col-sm-12 col-lg-9">
+				{% for text in sectiontext %}
+					{% if text.nom_fr == "Acceuil" %}
+						{{ text.text_fr|escape|linebreaks  }}
+					{% endif %}
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="pr-section specialities" style="background-image:url('{% static 'images/railroad.jpg' %}'); background-size: cover;" id="specialities">
+	<div class="main-title">
+		<h1><i class="far fa-comment-dots"></i> Nous sommes là pour vous</h1>
+	</div>
+	
+	<div class="main-text">
+		
+	</div>
+	
+	<div class="card-container">
+		<div class="row justify-content-center align-items-center">
+			{% for key, value in probleme_clientele.items %}
+				<div class="flip-card">
+					<div class="flip-card-inner">
+						<div class="flip-card-front">
+							<h3>{{ key }}</h3>
+						</div>
+						<div class="flip-card-back">
+							{% for item in value %}
+								<h6><a href="{% url 'detail_problematique' item.id %}">{{ item.probleme }}</a></h6>
+							{% endfor%}
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+		
+</div>
+
+<div class="specialities profile" style="background-image:url('{% static 'images/LOGO_OPQ.png' %}'); background-size: 700px 700px; background-repeat: no-repeat; background-position:center;" id="staff">
+	<div class="main-title">
+		<h1><i class="far fa-user"></i>  Notre Équipe</h1>
+	</div>
+	<div class="main-text">
+		{% for text in sectiontext %}
+			{% if text.nom_fr == "Psychologues" %}
+				{{ text.text_fr|escape|linebreaks  }}
+			{% endif %}
+		{% endfor %}
+	</div>
+	<div class="container ">
+		<div class="row justify-content-center align-items-center">
+		{% for psy in staff %}
+			<div class="psy-card hvr-float-shadow">
+				<a href="{% url 'psychologues_profile' psy.id %}">
+					<img class="img-raised rounded-circle img-fluid card-img-top" src= "media/{{ psy.psychologue.avatar }}" alt="Italian Trulli"><br>
+				</a>
+				<div class="card-psy-name"> <p> {{ psy.first_name }} {{psy.last_name }} </p></div>
+				<div class="education-profile">{{psy.psychologue.education }}</div>
+				<a class="btn btn-block btn-social btn-twitter">
+					<a href="{{ psy.psychologue.linked_in }}"><i class="fab fa-linkedin"></i></a>
+					<a href = "mailto: {{ psy.email }}"><i class="fas fa-envelope"></i></a>
+					<a href="tel:{{ psy.psychologue.phone }}"><i class="fas fa-phone"></i></a><br>	
+				</a>
+			</div>
+		{% endfor %}
+		</div>
+	</div>		
+</div>
+
+<div class="pr-section locaux" id="locaux">
+	<div class="main-title">
+		<h1> <i class="far fa-building"></i> Nos locaux</h1>
+	</div>
+	<div class="container main-text">
+		{% for text in sectiontext %}
+			{% if text.nom_fr == "Nos locaux" %}
+				{{ text.text_fr|escape|linebreaks  }}
+			{% endif %}
+		{% endfor %}
+	</div>
+</div>
+
+{% endblock content %}
